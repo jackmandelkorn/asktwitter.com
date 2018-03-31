@@ -1,0 +1,36 @@
+/*containers*/
+.card {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  width: calc(30vw - 15px);
+  min-width: 256px;
+  border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  color: black;
+  background-color: white;
+  margin: 15px;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.card-main {
+  width: 100vw;
+  margin-top: 30px;
+  padding: 15px -15px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  box-sizing: border-box;
+  display: none;
+  opacity: 0;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ask Twitter</title>
+    <link rel="icon" href="twitter-small.png">
+    <link rel="stylesheet" href="css/asktwitter.css">
+    <link rel="stylesheet" href="css/scroll.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.20.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+    <script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
+  </head>
+  <body class="keep3d">
+    <p class="view3d" id="view3d-info"></p>
+    <div id="main">
+      <div class="row" id="title-row">
+        <a href="https://asktwitter.com">
+          <img id="logo" src="twitter-big.png">
+          <h1 id="title">ask twitter</h1>
+        </a>
+      </div>
+      <p id="subtitle">Twitter sentiment analysis done right.</p>
+      <div class="row search-ui">
+        <input id="main-search" type="text" spellcheck="false" maxlength="24" placeholder="search...">
+      </div>
+      <div class="row search-ui" id="main-search-button-container">
+        <button id="main-search-button" class="disabled" onclick="search()">Search</button>
+      </div>
+      <img id="loading" class="post-search-ui" src="load.gif">
+      <h3 id="error-message">An error occurred. Please try your search again.</h3>
+      <h3 id="query-display" class="result-ui">Results for ""</h3>
+      <div class="result-ui header-line"></div>
+      <h3 class="result-ui" id="sentiment-anchor">Sentiment Analysis</h3>
+      <span id="big-number" class="result-ui"></span>
+      <p class="result-ui" id="sentiment-average"></p>
+      <div id="chart-container" class="result-ui">
+        <canvas id="chart" maintainAspectRatio="false"></canvas>
+      </div>
+      <h3 class="result-ui" id="tweets-anchor">Tweets</h3>
+      <div class="row-separate">
+        <span id="view3d-button" class="result-ui" onclick="toggle3d()">3D View</span>
+        <p class="result-ui subtitle-separate">Viewing tweets from <span class="emphasize"><b id="selected-point">today</b></span></p>
+      </div>
+      <div class="result-ui header-line"></div>
+      <div class="card-main result-ui flex">
+        <div class="card-container" id="negative-results"></div>
+        <div class="card-container" id="positive-results"></div>
+      </div>
+      <h3 class="result-ui">Topic Analysis</h3>
+      <p class="result-ui subtitle">Viewing topics from <span class="emphasize"><b id="selected-point-2">today</b></span></p>
+      <div class="result-ui header-line"></div>
+      <div class="result-ui flex" id="topic-container"></div>
+      <p class="result-ui" id="back-to-top" onclick="backToTop()">Back to top</p>
+    </div>
+    <div id="footer">
+      <a href="http://jackmandelkorn.com"><p>&copy; 2018 jack mandelkorn</p></a>
+      <a href="https://www.losaltoshacks.com"><p>made at <img id="la-logo" src="losaltos.ico"></p></a>
+    </div>
+    <div id="view3d-main" onmousemove="mouseMove(event)" class="view3d"></div>
+    <div id="view3d-ground" class="view3d"></div>
+    <div id="view3d-close-container" class="view3d">
+      <img id="view3d-close" onclick="toggle3d()" src="close.png">
+    </div>
+    <h2 id="view3d-title" class="view3d">ask twitter</h2>
+    <h2 id="view3d-message" class="view3d">Use the arrow keys to move and the mouse to look around.</h2>
+    <script src="js/scroll.js"></script>
+    <script src="js/keys.js"></script>
+    <script src="js/panel.js"></script>
+    <script src="js/asktwitter.js"></script>
+  </body>
+</html>
