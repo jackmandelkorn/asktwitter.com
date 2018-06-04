@@ -137,7 +137,11 @@ function generateTweets(index) {
   var negative = document.getElementById("negative-results");
   var positiveTotal = 0;
   var negativeTotal = 0;
-  var tweets = globalObj.data[index].statuses;
+  var tweetsInit = globalObj.data[index].statuses;
+  var tweets = tweetsInit.reduce(function(a,b){
+    if (a.full_text.indexOf(b.full_text) < 0 ) a.push(b);
+    return a;
+  },[]);
   for (var i = 0; i < tweets.length; i++) {
     var card = document.createElement("div");
     card.className = "card";
